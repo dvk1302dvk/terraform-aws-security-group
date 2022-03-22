@@ -111,7 +111,11 @@ resource "aws_security_group_rule" "ingress_with_source_security_group_id" {
   description = lookup(
     var.ingress_with_source_security_group_id[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.ingress_with_source_security_group_id[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -155,7 +159,11 @@ resource "aws_security_group_rule" "computed_ingress_with_source_security_group_
   description = lookup(
     var.computed_ingress_with_source_security_group_id[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.computed_ingress_with_source_security_group_id[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -206,7 +214,11 @@ resource "aws_security_group_rule" "ingress_with_cidr_blocks" {
   description = lookup(
     var.ingress_with_cidr_blocks[count.index],
     "description",
-    "Ingress Rule",
+     try(var.rules[lookup(
+      var.ingress_with_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -245,7 +257,11 @@ resource "aws_security_group_rule" "computed_ingress_with_cidr_blocks" {
   description = lookup(
     var.computed_ingress_with_cidr_blocks[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.computed_ingress_with_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -296,7 +312,11 @@ resource "aws_security_group_rule" "ingress_with_ipv6_cidr_blocks" {
   description = lookup(
     var.ingress_with_ipv6_cidr_blocks[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.ingress_with_ipv6_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -335,7 +355,11 @@ resource "aws_security_group_rule" "computed_ingress_with_ipv6_cidr_blocks" {
   description = lookup(
     var.computed_ingress_with_ipv6_cidr_blocks[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.computed_ingress_with_ipv6_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -379,7 +403,11 @@ resource "aws_security_group_rule" "ingress_with_self" {
   description = lookup(
     var.ingress_with_self[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.ingress_with_self[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -411,7 +439,11 @@ resource "aws_security_group_rule" "computed_ingress_with_self" {
   description = lookup(
     var.computed_ingress_with_self[count.index],
     "description",
-    "Ingress Rule",
+    try(var.rules[lookup(
+      var.computed_ingress_with_self[count.index],
+      "rule",
+      "_",
+    )][3],"Ingress Rule" ),
   )
 
   from_port = lookup(
@@ -487,7 +519,11 @@ resource "aws_security_group_rule" "egress_with_source_security_group_id" {
   description = lookup(
     var.egress_with_source_security_group_id[count.index],
     "description",
-    "Egress Rule",
+    try(var.rules[lookup(
+      var.egress_with_source_security_group_id[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -531,7 +567,11 @@ resource "aws_security_group_rule" "computed_egress_with_source_security_group_i
   description = lookup(
     var.computed_egress_with_source_security_group_id[count.index],
     "description",
-    "Egress Rule",
+     try(var.rules[lookup(
+      var.computed_egress_with_source_security_group_id[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -582,7 +622,11 @@ resource "aws_security_group_rule" "egress_with_cidr_blocks" {
   description = lookup(
     var.egress_with_cidr_blocks[count.index],
     "description",
-    "Egress Rule",
+    try(var.rules[lookup(
+      var.egress_with_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -621,7 +665,11 @@ resource "aws_security_group_rule" "computed_egress_with_cidr_blocks" {
   description = lookup(
     var.computed_egress_with_cidr_blocks[count.index],
     "description",
-    "Egress Rule",
+     try(var.rules[lookup(
+      var.computed_egress_with_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -672,7 +720,11 @@ resource "aws_security_group_rule" "egress_with_ipv6_cidr_blocks" {
   description = lookup(
     var.egress_with_ipv6_cidr_blocks[count.index],
     "description",
-    "Egress Rule",
+     try(var.rules[lookup(
+      var.egress_with_ipv6_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -711,7 +763,11 @@ resource "aws_security_group_rule" "computed_egress_with_ipv6_cidr_blocks" {
   description = lookup(
     var.computed_egress_with_ipv6_cidr_blocks[count.index],
     "description",
-    "Egress Rule",
+    try(var.rules[lookup(
+      var.computed_egress_with_ipv6_cidr_blocks[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -755,7 +811,11 @@ resource "aws_security_group_rule" "egress_with_self" {
   description = lookup(
     var.egress_with_self[count.index],
     "description",
-    "Egress Rule",
+    try(var.rules[lookup(
+      var.egress_with_self[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
@@ -787,7 +847,11 @@ resource "aws_security_group_rule" "computed_egress_with_self" {
   description = lookup(
     var.computed_egress_with_self[count.index],
     "description",
-    "Egress Rule",
+    try(var.rules[lookup(
+      var.computed_egress_with_self[count.index],
+      "rule",
+      "_",
+    )][3],"Egress Rule"),
   )
 
   from_port = lookup(
